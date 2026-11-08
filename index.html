@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6fa">
+  <meta name="description" content="Личный список задач — просто планируйте день и отмечайте важное.">
+  <title>Дела — список задач</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar" aria-label="Дела">
+      <a class="brand" href="#" aria-label="Дела — главная">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6.5 12.5 3.4 3.4 7.7-8"/></svg></span>
+        <span>дела<span class="brand-period">.</span></span>
+      </a>
+      <span class="topbar-note"><span class="online-dot"></span> Ваш день под контролем</span>
+    </header>
+
+    <section class="todo-card" aria-labelledby="page-title">
+      <div class="intro">
+        <div class="eyebrow"><span class="eyebrow-line"></span> ЛИЧНЫЙ ПЛАНЕР</div>
+        <h1 id="page-title">Меньше хаоса.<br><span>Больше сделанного.</span></h1>
+        <p class="subtitle">Запишите важное — и двигайтесь шаг за шагом.</p>
+      </div>
+
+      <form class="add-form" id="task-form" autocomplete="off">
+        <label class="visually-hidden" for="task-input">Новая задача</label>
+        <span class="input-plus" aria-hidden="true">+</span>
+        <input id="task-input" name="task" type="text" maxlength="300" placeholder="Например, подготовить список покупок…" aria-describedby="form-hint">
+        <button class="add-button" type="submit"><span>Добавить</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+      </form>
+      <p class="form-hint" id="form-hint" aria-live="polite">Нажмите Enter, чтобы быстро добавить задачу</p>
+
+      <section class="stats" aria-label="Статистика задач">
+        <div class="stat"><span class="stat-value" id="total-count">0</span><span class="stat-label">всего</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-value" id="active-count">0</span><span class="stat-label">осталось</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-value" id="completed-count">0</span><span class="stat-label">готово</span></div>
+        <div class="progress-track" aria-label="Прогресс выполнения"><span class="progress-fill" id="progress-fill"></span></div>
+      </section>
+
+      <div class="list-toolbar">
+        <div class="filter-tabs" role="tablist" aria-label="Фильтр задач">
+          <button class="filter-tab is-active" type="button" role="tab" aria-selected="true" data-filter="all">Все <span class="filter-count" id="filter-all-count">0</span></button>
+          <button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="active">Активные</button>
+          <button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="completed">Выполненные</button>
+        </div>
+        <button class="clear-button" id="clear-completed" type="button" aria-label="Удалить выполненные задачи" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h12M8 6V4h4v2m3 0-.7 10H5.7L5 6m3 3v4m4-4v4"/></svg><span>Удалить выполненные</span></button>
+      </div>
+
+      <ul class="task-list" id="task-list" aria-label="Список задач"></ul>
+      <div class="empty-state" id="empty-state">
+        <div class="empty-illustration" aria-hidden="true"><span class="empty-sun"></span><span class="empty-paper"><i></i><i></i><i></i></span><span class="empty-spark">✦</span></div>
+        <p class="empty-title" id="empty-title">Пока здесь чисто</p>
+        <p class="empty-copy" id="empty-copy">Добавьте первую задачу — маленький шаг уже считается.</p>
+      </div>
+
+      <footer class="card-footer"><span><span class="footer-check">✓</span> Сохраняется автоматически</span><span id="storage-status">Только для вас</span></footer>
+    </section>
+    <p class="page-footnote">Двигайтесь в своём ритме. Всё получится.</p>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="noscript">Для работы списка задач необходимо включить JavaScript.</p></noscript>
+</body>
+</html>
